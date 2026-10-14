@@ -112,6 +112,17 @@
             transition: all 0.4s ease;
         }
 
+        .navbar-toggler {
+            padding: 0.4rem 0.6rem;
+            border: 1px solid rgba(21, 101, 192, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+            outline: none;
+        }
+
         .navbar-kkn.scrolled {
             padding: 10px 0;
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
@@ -391,6 +402,18 @@ body.dark-mode .navbar-kkn .nav-link.active {
     background-color: rgba(102,187,106,0.1);
 }
 
+body.dark-mode .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .navbar-toggler-icon {
+    filter: invert(1) brightness(2);
+}
+
+body.dark-mode .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
 body.dark-mode .card-modern {
     background: #1A2A3A;
     box-shadow: 0 4px 24px rgba(0,0,0,0.2);
@@ -503,11 +526,11 @@ body.dark-mode .dark-toggle::after {
                         <a href="{{ url('/lokasi') }}" class="btn btn-utama btn-sm px-4">
                             <i class="bi bi-geo-alt-fill"></i> Lokasi
                         </a>
-                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0 d-flex align-items-center gap-2">
-                            <i class="bi bi-sun-fill small" style="color: #f59e0b;" id="icon-light"></i>
-                            <button class="dark-toggle" id="dark-toggle" title="Toggle Dark Mode"></button>
-                            <i class="bi bi-moon-fill small" style="color: #6366f1;" id="icon-dark"></i>
-                        </li>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-sun-fill small" style="color: #f59e0b;" id="icon-light"></i>
+                        <button class="dark-toggle" id="dark-toggle" title="Toggle Dark Mode"></button>
+                        <i class="bi bi-moon-fill small" style="color: #6366f1;" id="icon-dark"></i>
                     </li>
                 </ul>
             </div>
