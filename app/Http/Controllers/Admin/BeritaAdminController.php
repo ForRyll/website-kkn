@@ -83,33 +83,4 @@ public function edit($id)
         return redirect('/admin/berita')->with('success', 'Berita berhasil dihapus!');
     }
 
-
-    public function updateById(Request $request, $id)
-{
-    $berita = Berita::findOrFail($id);
-
-    $request->validate([
-        'judul' => 'required|string|max:255',
-        'isi' => 'required|string',
-        'penulis' => 'required|string|max:255',
-        'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-        'tempat' => 'nullable|string|max:255',
-    ]);
-
-    $data = $request->except('gambar');
-
-    if ($request->hasFile('gambar')) {
-        if ($berita->gambar) {
-            $fileLama = public_path('uploads/berita/' . $berita->gambar);
-            if (file_exists($fileLama)) unlink($fileLama);
-        }
-        $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
-        $request->file('gambar')->move(public_path('uploads/berita'), $namaFile);
-        $data['gambar'] = $namaFile;
-    }
-
-    $berita->update($data);
-    return redirect('/admin/berita')->with('success', 'Berita berhasil diperbarui!');
-}
-
 }

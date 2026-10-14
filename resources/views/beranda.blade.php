@@ -111,7 +111,7 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="card-modern overflow-hidden" style="height: 320px;">
-    <img src="{{ asset('images/ciliang.jpg') }}" alt="Desa Ciliang" class="w-100 h-100" style="object-fit: cover;">
+    <img src="{{ asset('images/ciliang.jpg') }}" alt="Desa Ciliang" class="w-100 h-100" loading="lazy" decoding="async" style="object-fit: cover;">
 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left">

@@ -27,6 +27,8 @@
                             <img src="{{ asset('uploads/umkm/' . $umkm->gambar) }}"
                                  alt="{{ $umkm->nama_usaha }}"
                                  class="w-100 h-100"
+                                 loading="lazy"
+                                 decoding="async"
                                  style="object-fit: cover; transition: transform 0.4s ease;">
                         </div>
                     @else

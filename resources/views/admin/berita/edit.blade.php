@@ -14,8 +14,9 @@
                 </div>
                 @endif
 
-               <form action="{{ url('admin/berita/' . $berita->id . '/update') }}" method="POST" enctype="multipart/form-data">
+               <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
 
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Judul</label>
@@ -54,7 +55,7 @@
                         <button type="submit" class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">Update</button>
                         <a href="{{ route('berita.index') }}" class="border px-5 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">Batal</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-2">Action: {{ url('admin/berita/' . $berita->id . '/update') }}</p>
+                    <p class="text-xs text-gray-400 mb-2">Action: {{ route('berita.update', $berita->id) }}</p>
                 </form>
             </div>
         </div>

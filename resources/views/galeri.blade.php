@@ -38,6 +38,8 @@
                             <img src="{{ asset('uploads/galeri/' . $galeri->gambar) }}"
                                  alt="{{ $galeri->judul }}"
                                  class="w-100 h-100"
+                                 loading="lazy"
+                                 decoding="async"
                                  style="object-fit: cover; transition: transform 0.4s ease;">
                         @else
                             <div class="w-100 h-100 d-flex align-items-center justify-content-center"

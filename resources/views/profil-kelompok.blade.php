@@ -36,6 +36,8 @@
                     @if($anggota->foto && file_exists(public_path('uploads/anggota/' . $anggota->foto)))
                         <img src="{{ asset('uploads/anggota/' . $anggota->foto) }}"
                              class="mx-auto mb-3 rounded-circle"
+                             loading="lazy"
+                             decoding="async"
                              style="width: 84px; height: 84px; object-fit: cover; border: 3px solid #E6F4EA;">
                     @else
                         <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center"
@@ -72,6 +74,8 @@
                 <div id="modal-foto-wrapper" class="mx-auto mb-3" style="width: 100px; height: 100px; position: relative;">
     <img id="modal-foto" src="" alt=""
          class="rounded-circle position-absolute top-0 start-0"
+         loading="lazy"
+         decoding="async"
          style="width: 100px; height: 100px; object-fit: cover; border: 4px solid rgba(255,255,255,0.4); display: none;">
     <div id="modal-foto-placeholder"
          class="rounded-circle position-absolute top-0 start-0 d-flex align-items-center justify-content-center"

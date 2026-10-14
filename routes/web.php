@@ -43,7 +43,6 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('program-kerja', ProgramKerjaAdminController::class);
     Route::resource('berita', BeritaAdminController::class);
-    Route::post('berita/{id}/update', [BeritaAdminController::class, 'updateById']);
     Route::resource('galeri', GaleriAdminController::class);
     Route::resource('umkm', UmkmAdminController::class);
 Route::resource('anggota', AnggotaAdminController::class)->parameters([
