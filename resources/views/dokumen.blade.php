@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Download Dokumen')
+@section('meta_description', 'Kumpulan dokumen resmi KKN Kelompok 125 Desa Ciliang.')
+@section('og_title', 'Dokumen | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 

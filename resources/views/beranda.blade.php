@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Beranda')
+@section('meta_description', 'Website Pusat Informasi KKN Kelompok 125 Desa Ciliang, Kecamatan Parigi, Kabupaten Pangandaran.')
+@section('og_title', 'Beranda | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 

@@ -35,6 +35,7 @@
                             <img src="{{ asset('uploads/berita/' . $berita->gambar) }}"
                                  alt="{{ $berita->judul }}"
                                  class="w-100 h-100"
+                                 loading="lazy"
                                  style="object-fit: cover; transition: transform 0.4s ease;">
                         </div>
                     @else
@@ -82,7 +83,7 @@
             <!-- Foto Header -->
             <div id="modal-berita-foto-wrapper" style="position: relative; max-height: 280px; overflow: hidden;">
                 <img id="modal-berita-foto" src="" alt=""
-                     class="w-100" style="object-fit: cover; height: 280px; display: none;">
+                     class="w-100" loading="lazy" style="object-fit: cover; height: 280px; display: none;">
                 <div id="modal-berita-foto-placeholder"
                      class="bg-gradient-utama d-flex align-items-center justify-content-center"
                      style="height: 160px; display: none;">
