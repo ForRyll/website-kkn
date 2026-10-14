@@ -1,0 +1,22 @@
+{
+    "name": "KKN Kelompok 125 Desa Ciliang",
+    "short_name": "KKN 125",
+    "description": "Website Pusat Informasi KKN Kelompok 125 Desa Ciliang",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0D47A1",
+    "theme_color": "#1565C0",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/logoweb.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/logoweb.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
