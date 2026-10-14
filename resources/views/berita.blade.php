@@ -16,6 +16,48 @@
 
 <section class="py-5">
     <div class="container py-3">
+        <!-- Filter & Search -->
+        <div class="row mb-4 g-3">
+            <div class="col-md-6">
+                <form method="GET" action="{{ url('/berita') }}" class="d-flex gap-2">
+                    <input type="text" 
+                           name="search" 
+                           class="form-control" 
+                           placeholder="Cari berita..."
+                           value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-utama px-4">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form method="GET" action="{{ url('/berita') }}" class="d-flex gap-2">
+                    <select name="penulis" class="form-select" onchange="this.form.submit()">
+                        <option value="">Semua Penulis</option>
+                        @foreach ($penulisList as $penulis)
+                            <option value="{{ $penulis }}" {{ request('penulis') === $penulis ? 'selected' : '' }}>
+                                {{ $penulis }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @if (request('search') || request('penulis'))
+                        <a href="{{ url('/berita') }}" class="btn btn-outline-secondary px-3">
+                            <i class="bi bi-x"></i> Reset
+                        </a>
+                    @endif
+                </form>
+            </div>
+        </div>
+
+        <!-- Result Info -->
+        @if (request('search') || request('penulis'))
+        <p class="text-secondary small mb-3">
+            Menampilkan <strong>{{ $beritas->count() }}</strong> dari <strong>{{ $beritas->total() }}</strong> berita
+            @if (request('search')) untuk "<strong>{{ request('search') }}</strong>"@endif
+            @if (request('penulis')) dari <strong>{{ request('penulis') }}</strong>@endif
+        </p>
+        @endif
+
         <div class="row g-4">
             @forelse ($beritas as $index => $berita)
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ ($index % 2) * 100 }}">
@@ -68,10 +110,17 @@
             @empty
             <div class="col-12 text-center text-secondary py-5">
                 <i class="bi bi-newspaper fs-1 mb-3 d-block"></i>
-                Belum ada berita yang ditambahkan.
+                Tidak ada berita yang ditemukan.
             </div>
             @endforelse
         </div>
+
+        <!-- Pagination -->
+        @if ($beritas->hasPages())
+        <div class="d-flex justify-content-center mt-5">
+            {{ $beritas->links('pagination::bootstrap-5') }}
+        </div>
+        @endif
     </div>
 </section>
 

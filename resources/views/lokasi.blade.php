@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Lokasi Desa')
+@section('meta_description', 'Peta lokasi Desa Ciliang, Kecamatan Parigi, Kabupaten Pangandaran.')
+@section('og_title', 'Lokasi | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 

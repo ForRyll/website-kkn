@@ -520,6 +520,37 @@ body.dark-mode .dark-toggle::after {
     <!-- BACK TO TOP -->
     <button id="back-to-top" title="Kembali ke atas"><i class="bi bi-arrow-up"></i></button>
 
+    <!-- WA Floating -->
+    <a href="https://wa.me/{{ config('app.whatsapp_number') }}" 
+       target="_blank"
+       class="wa-float">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <style>
+        .wa-float {
+            position: fixed;
+            bottom: 80px;
+            right: 28px;
+            background: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            z-index: 998;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 6px 16px rgba(37,211,102,0.6);
+        }
+    </style>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-kkn sticky-top" id="navbar-utama">
         <div class="container">

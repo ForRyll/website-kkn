@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'UMKM')
+@section('meta_description', 'Katalog UMKM dan potensi ekonomi lokal Desa Ciliang binaan KKN Kelompok 125.')
+@section('og_title', 'UMKM | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 

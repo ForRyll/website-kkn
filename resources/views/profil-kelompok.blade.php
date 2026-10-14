@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Profil Kelompok')
+@section('meta_description', 'Profil mahasiswa anggota KKN Kelompok 125 Desa Ciliang.')
+@section('og_title', 'Profil Kelompok | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 

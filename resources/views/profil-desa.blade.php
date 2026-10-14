@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Profil Desa')
+@section('meta_description', 'Informasi profil dan potensi Desa Ciliang, Kecamatan Parigi, Kabupaten Pangandaran.')
+@section('og_title', 'Profil Desa | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 

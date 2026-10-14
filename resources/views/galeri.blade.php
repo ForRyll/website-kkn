@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Galeri')
+@section('meta_description', 'Galeri foto dokumentasi kegiatan KKN Kelompok 125 di Desa Ciliang.')
+@section('og_title', 'Galeri | KKN Kelompok 125 Desa Ciliang')
 
 @section('content')
 
