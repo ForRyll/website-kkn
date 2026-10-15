@@ -33,7 +33,7 @@ class UmkmAdminController extends Controller
         $data = $request->except('gambar');
 
         if ($request->hasFile('gambar')) {
-            $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
+            $namaFile = $request->file('gambar')->hashName();
             $request->file('gambar')->move(public_path('uploads/umkm'), $namaFile);
             $data['gambar'] = $namaFile;
         }
@@ -65,7 +65,7 @@ class UmkmAdminController extends Controller
                 $fileLama = public_path('uploads/umkm/' . $umkm->gambar);
                 if (file_exists($fileLama)) unlink($fileLama);
             }
-            $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
+            $namaFile = $request->file('gambar')->hashName();
             $request->file('gambar')->move(public_path('uploads/umkm'), $namaFile);
             $data['gambar'] = $namaFile;
         }

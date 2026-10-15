@@ -32,7 +32,7 @@ class AnggotaAdminController extends Controller
         $data = $request->except('foto');
 
         if ($request->hasFile('foto')) {
-            $namaFile = time() . '_' . $request->file('foto')->getClientOriginalName();
+            $namaFile = $request->file('foto')->hashName();
             $request->file('foto')->move(public_path('uploads/anggota'), $namaFile);
             $data['foto'] = $namaFile;
         }
@@ -64,7 +64,7 @@ class AnggotaAdminController extends Controller
                 $fileLama = public_path('uploads/anggota/' . $anggota->foto);
                 if (file_exists($fileLama)) unlink($fileLama);
             }
-            $namaFile = time() . '_' . $request->file('foto')->getClientOriginalName();
+            $namaFile = $request->file('foto')->hashName();
             $request->file('foto')->move(public_path('uploads/anggota'), $namaFile);
             $data['foto'] = $namaFile;
         }

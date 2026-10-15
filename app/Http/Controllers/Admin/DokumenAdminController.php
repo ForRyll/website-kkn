@@ -28,7 +28,7 @@ class DokumenAdminController extends Controller
             'file' => 'required|mimes:pdf,doc,docx|max:5120',
         ]);
 
-        $namaFile = time() . '_' . $request->file('file')->getClientOriginalName();
+        $namaFile = $request->file('file')->hashName();
         $request->file('file')->move(public_path('uploads/dokumen'), $namaFile);
 
         Dokumen::create([

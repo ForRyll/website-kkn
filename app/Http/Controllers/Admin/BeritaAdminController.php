@@ -32,7 +32,7 @@ class BeritaAdminController extends Controller
         $data = $request->except('gambar');
 
         if ($request->hasFile('gambar')) {
-            $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
+            $namaFile = $request->file('gambar')->hashName();
             $request->file('gambar')->move(public_path('uploads/berita'), $namaFile);
             $data['gambar'] = $namaFile;
         }
@@ -64,7 +64,7 @@ public function edit($id)
                 $fileLama = public_path('uploads/berita/' . $berita->gambar);
                 if (file_exists($fileLama)) unlink($fileLama);
             }
-            $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
+            $namaFile = $request->file('gambar')->hashName();
             $request->file('gambar')->move(public_path('uploads/berita'), $namaFile);
             $data['gambar'] = $namaFile;
         }

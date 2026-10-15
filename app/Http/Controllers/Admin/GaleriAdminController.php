@@ -27,7 +27,7 @@ class GaleriAdminController extends Controller
             'gambar' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
+        $namaFile = $request->file('gambar')->hashName();
         $request->file('gambar')->move(public_path('uploads/galeri'), $namaFile);
 
         Galeri::create([
@@ -64,7 +64,7 @@ class GaleriAdminController extends Controller
                 unlink($fileLama);
             }
 
-            $namaFile = time() . '_' . $request->file('gambar')->getClientOriginalName();
+            $namaFile = $request->file('gambar')->hashName();
             $request->file('gambar')->move(public_path('uploads/galeri'), $namaFile);
             $data['gambar'] = $namaFile;
         }
