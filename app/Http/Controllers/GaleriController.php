@@ -6,9 +6,17 @@ use App\Models\Galeri;
 
 class GaleriController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $galeris = Galeri::latest()->get();
-        return view('galeri', compact('galeris'));
+        $query = Galeri::query();
+
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->kategori);
+        }
+
+        $galeris = $query->latest()->paginate(12)->withQueryString();
+        $categories = Galeri::select('kategori')->distinct()->pluck('kategori');
+
+        return view('galeri', compact('galeris', 'categories'));
     }
 }

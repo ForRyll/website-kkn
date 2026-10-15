@@ -12,7 +12,7 @@
 
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <p class="text-sm text-gray-500">Total: {{ $umkms->count() }} UMKM</p>
+                    <p class="text-sm text-gray-500">Total: {{ $umkms->total() }} UMKM</p>
                     <a href="{{ route('umkm.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
                         + Tambah UMKM
                     </a>
@@ -49,6 +49,11 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="mt-6">
+                    {{ $umkms->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

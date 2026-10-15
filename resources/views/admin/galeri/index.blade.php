@@ -12,7 +12,7 @@
 
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <p class="text-sm text-gray-500">Total: {{ $galeris->count() }} foto</p>
+                    <p class="text-sm text-gray-500">Total: {{ $galeris->total() }} foto</p>
                     <a href="{{ route('galeri.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
                         + Tambah Foto
                     </a>
@@ -37,6 +37,11 @@
                     @empty
                     <p class="col-span-4 text-center text-gray-400 py-6">Belum ada foto.</p>
                     @endforelse
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="mt-6">
+                    {{ $galeris->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

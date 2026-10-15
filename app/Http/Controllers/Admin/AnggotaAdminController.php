@@ -10,7 +10,7 @@ class AnggotaAdminController extends Controller
 {
     public function index()
     {
-        $anggotas = Anggota::latest()->get();
+        $anggotas = Anggota::latest()->paginate(10);
         return view('admin.anggota.index', compact('anggotas'));
     }
 

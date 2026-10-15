@@ -10,7 +10,7 @@ class DokumenAdminController extends Controller
 {
     public function index()
     {
-        $dokumens = Dokumen::latest()->get();
+        $dokumens = Dokumen::latest()->paginate(10);
         return view('admin.dokumen.index', compact('dokumens'));
     }
 

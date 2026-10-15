@@ -10,7 +10,7 @@ class UmkmAdminController extends Controller
 {
     public function index()
     {
-        $umkms = Umkm::latest()->get();
+        $umkms = Umkm::latest()->paginate(10);
         return view('admin.umkm.index', compact('umkms'));
     }
 

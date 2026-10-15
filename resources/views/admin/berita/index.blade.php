@@ -12,7 +12,7 @@
 
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <p class="text-sm text-gray-500">Total: {{ $beritas->count() }} berita</p>
+                    <p class="text-sm text-gray-500">Total: {{ $beritas->total() }} berita</p>
                     <a href="{{ route('berita.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
                         + Tambah Berita
                     </a>
@@ -47,6 +47,11 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="mt-6">
+                    {{ $beritas->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>
