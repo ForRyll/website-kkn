@@ -19,33 +19,22 @@
 <section class="py-5">
     <div class="container py-3">
 
-        <!-- TOMBOL FILTER -->
-        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" data-aos="fade-up">
-            <button class="btn-filter active" data-filter="semua">Semua</button>
-            <button class="btn-filter" data-filter="Kegiatan">Kegiatan</button>
-            <button class="btn-filter" data-filter="Lingkungan">Lingkungan</button>
-            <button class="btn-filter" data-filter="Masyarakat">Masyarakat</button>
-            <button class="btn-filter" data-filter="Lainnya">Lainnya</button>
+        <!-- FILTER -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+            <a href="{{ url('/galeri') }}" class="btn-filter {{ !request()->has('kategori') ? 'active' : '' }}">Semua</a>
+            @foreach(['Kegiatan', 'Lingkungan', 'Masyarakat', 'Lainnya'] as $kat)
+                <a href="{{ url('/galeri?kategori=' . $kat) }}" class="btn-filter {{ request()->kategori == $kat ? 'active' : '' }}">{{ $kat }}</a>
+            @endforeach
         </div>
 
-        <!-- GRID FOTO -->
-        <div class="row g-4" id="galeri-grid">
+        <!-- GRID -->
+        <div class="row g-4">
             @forelse ($galeris as $index => $galeri)
-            <div class="col-md-4 col-6 galeri-item" data-kategori="{{ $galeri->kategori }}" data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 100 }}">
+            <div class="col-md-4 col-6" data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 100 }}">
                 <div class="card-modern h-100">
                     <div class="overflow-hidden" style="height: 220px;">
                         @if($galeri->gambar && file_exists(public_path('uploads/galeri/' . $galeri->gambar)))
-                            <img src="{{ asset('uploads/galeri/' . $galeri->gambar) }}"
-                                 alt="{{ $galeri->judul }}"
-                                 class="w-100 h-100"
-                                 loading="lazy"
-                                 decoding="async"
-                                 style="object-fit: cover; transition: transform 0.4s ease;">
-                        @else
-                            <div class="w-100 h-100 d-flex align-items-center justify-content-center"
-                                 style="background: linear-gradient(135deg, #E8F0FE, #E6F4EA);">
-                                <i class="bi bi-image fs-1 text-biru" style="opacity: 0.4;"></i>
-                            </div>
+                            <img src="{{ asset('uploads/galeri/' . $galeri->gambar) }}" alt="{{ $galeri->judul }}" class="w-100 h-100" loading="lazy" style="object-fit: cover;">
                         @endif
                     </div>
                     <div class="p-3">
@@ -55,18 +44,11 @@
                 </div>
             </div>
             @empty
-            <div class="col-12 text-center text-secondary py-5">
-                <i class="bi bi-images fs-1 mb-3 d-block"></i>
-                Belum ada foto yang ditambahkan.
-            </div>
+            <div class="col-12 text-center text-secondary py-5">Belum ada foto.</div>
             @endforelse
         </div>
 
-        <!-- PESAN KALAU FILTER KOSONG -->
-        <div id="filter-kosong" class="text-center text-secondary py-5 d-none">
-            <i class="bi bi-search fs-1 mb-3 d-block"></i>
-            Tidak ada foto di kategori ini.
-        </div>
+        <div class="mt-5">{{ $galeris->links('pagination::bootstrap-5') }}</div>
 
     </div>
 </section>

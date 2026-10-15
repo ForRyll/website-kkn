@@ -18,38 +18,37 @@
 
 <section class="py-5">
     <div class="container py-3">
+
+        <form method="GET" action="{{ url('/dokumen') }}" class="mb-5 d-flex gap-2">
+            <input type="text" name="search" value="{{ request()->search }}" class="form-control rounded-pill" placeholder="Cari dokumen...">
+            <button type="submit" class="btn btn-utama rounded-pill px-4">Cari</button>
+        </form>
+
         <div class="row g-4">
             @forelse ($dokumens as $index => $dokumen)
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ ($index % 2) * 100 }}">
+            <div class="col-md-6">
                 <div class="card-modern p-4 h-100 d-flex align-items-center gap-4">
                     <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0"
                          style="width: 56px; height: 56px; background: rgba(21,101,192,0.1);">
                         <i class="bi bi-file-earmark-pdf-fill fs-3 text-merah"></i>
                     </div>
                     <div class="flex-grow-1">
-                        <span class="badge-soft badge-soft-biru mb-1 d-inline-block">{{ $dokumen->kategori }}</span>
+                        <span class="badge-soft badge-soft-biru mb-1">{{ $dokumen->kategori }}</span>
                         <h6 class="font-heading fw-semibold mb-1">{{ $dokumen->judul }}</h6>
-                        @if($dokumen->deskripsi)
-                        <p class="text-secondary small mb-2">{{ $dokumen->deskripsi }}</p>
-                        @endif
-                        <p class="text-secondary small mb-0">
-                            <i class="bi bi-calendar3"></i> {{ $dokumen->created_at->format('d M Y') }}
-                        </p>
+                        @if($dokumen->deskripsi)<p class="text-secondary small mb-2">{{ $dokumen->deskripsi }}</p>@endif
+                        <p class="text-secondary small mb-0"><i class="bi bi-calendar3"></i> {{ $dokumen->created_at->format('d M Y') }}</p>
                     </div>
-                    <a href="{{ asset('uploads/dokumen/' . $dokumen->file) }}"
-                       download
-                       class="btn-utama flex-shrink-0 px-3 py-2" style="font-size: 0.85rem;">
+                    <a href="{{ asset('uploads/dokumen/' . $dokumen->file) }}" class="btn-utama flex-shrink-0 px-3 py-2" download>
                         <i class="bi bi-download"></i>
                     </a>
                 </div>
             </div>
             @empty
-            <div class="col-12 text-center text-secondary py-5">
-                <i class="bi bi-file-earmark-x fs-1 mb-3 d-block"></i>
-                Belum ada dokumen yang tersedia.
-            </div>
+            <div class="col-12 text-center text-secondary py-5">Belum ada dokumen.</div>
             @endforelse
         </div>
+
+        <div class="mt-5">{{ $dokumens->links('pagination::bootstrap-5') }}</div>
     </div>
 </section>
 

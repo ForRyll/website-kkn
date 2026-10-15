@@ -11,7 +11,7 @@ class ProgramKerjaAdminController extends Controller
     // Tampilkan semua data (tabel admin)
     public function index()
     {
-        $programs = ProgramKerja::latest()->get();
+        $programs = ProgramKerja::latest()->paginate(10);
         return view('admin.program-kerja.index', compact('programs'));
     }
 
